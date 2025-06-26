@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#2a0a5c] to-[#6e2eb7] py-8">
+    <main className="min-h-screen bg-gradient-to-b from-[#2a0a5c] mb-15 to-[#6e2eb7] py-8">
       <div className="max-w-lg mx-auto flex flex-col items-center">
         <img
           src="/001.png"
