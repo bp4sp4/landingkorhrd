@@ -15,17 +15,26 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
+import { usePathname } from "next/navigation";
 
 export default function StickyFooter() {
+  const pathname = usePathname();
   const [formData, setFormData] = useState({
     name: "",
     phoneNumber: "",
     agreed: false,
   });
+  const [phoneError, setPhoneError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    value = value.replace(/[^0-9-]/g, "");
+    setFormData((prev) => ({ ...prev, phoneNumber: value }));
   };
 
   const handleCheckboxChange = (checked: boolean) => {
@@ -34,6 +43,10 @@ export default function StickyFooter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (phoneError) {
+      alert(phoneError);
+      return;
+    }
     if (!formData.agreed) {
       alert("개인정보처리방침에 동의해주세요.");
       return;
@@ -60,11 +73,13 @@ export default function StickyFooter() {
     }
   };
 
+  if (pathname.startsWith("/admin")) return null;
+
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-gradient-to-r from-background via-muted to-background shadow-lg">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 py-3 px-4 md:flex-row md:py-4">
+    <footer className="w-full bg-white ... md:fixed md:bottom-0 md:left-0 md:right-0 md:z-50 ...">
+      <div className="container mx-auto flex flex-col items-center justify-center gap-4 py-3 px-4 md:flex-row md:py-4">
         {/* Contact Information */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center flex-col md:flex-row md:gap-6">
           <div className="relative">
             <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full"></div>
             <div className="relative text-center">
@@ -72,7 +87,7 @@ export default function StickyFooter() {
                 학습상담문의
               </p>
               <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
-                1544-7279
+                010-8484-7933
               </p>
             </div>
           </div>
@@ -90,9 +105,9 @@ export default function StickyFooter() {
         {/* Consultation Form */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-wrap md:flex-nowrap items-center gap-3 w-full md:w-auto"
+          className="flex flex-col gap-2 md:flex-row md:gap-3  items-center w-full md:w-auto"
         >
-          <div className="flex gap-2 w-full md:w-auto">
+          <div className="flex flex-col gap-2 md:flex-row md:gap-2 w-full md:w-auto">
             <Input
               type="text"
               name="name"
@@ -101,19 +116,17 @@ export default function StickyFooter() {
               onChange={handleChange}
               className="bg-background border-input h-9 w-full md:w-24"
             />
-
             <Input
               type="tel"
               name="phoneNumber"
-              placeholder="전화번호"
+              placeholder="-제외 전화번호"
               value={formData.phoneNumber}
-              onChange={handleChange}
+              onChange={handlePhoneChange}
               className="bg-background border-input h-9 w-full md:w-48"
             />
           </div>
-
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <div className="flex items-center space-x-2">
+          <div className="flex flex-col gap-2 md:flex-row md:gap-2 w-full md:w-auto">
+            <div className="flex flex-row items-center gap-2 w-full md:w-auto">
               <Checkbox
                 id="terms"
                 checked={formData.agreed}
@@ -124,7 +137,7 @@ export default function StickyFooter() {
                 <DialogTrigger asChild>
                   <button
                     type="button"
-                    className="text-xs md:text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors"
+                    className="text-xs md:text-sm text-muted-foreground underline cursor-pointer hover:text-foreground transition-colors whitespace-nowrap"
                   >
                     개인정보처리방침 동의
                   </button>
@@ -187,7 +200,6 @@ export default function StickyFooter() {
                 </DialogContent>
               </Dialog>
             </div>
-
             <Button
               type="submit"
               className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground font-medium w-full md:w-auto transition-all duration-300 h-9"
