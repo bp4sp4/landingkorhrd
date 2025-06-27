@@ -119,7 +119,7 @@ export default function StickyFooter() {
             <Input
               type="tel"
               name="phoneNumber"
-              placeholder="-제외 전화번호"
+              placeholder="-없이 숫자만 입력"
               value={formData.phoneNumber}
               onChange={handlePhoneChange}
               className="bg-background border-input h-9 w-full md:w-48"
