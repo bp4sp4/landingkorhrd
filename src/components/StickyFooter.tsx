@@ -76,8 +76,8 @@ export default function StickyFooter() {
   if (pathname.startsWith("/admin")) return null;
 
   return (
-    <footer className="w-full bg-white ... md:fixed md:bottom-0 md:left-0 md:right-0 md:z-50 ...">
-      <div className="container mx-auto flex flex-col items-center justify-center gap-4 py-3 px-4 md:flex-row md:py-4">
+    <footer className="w-full">
+      <div className="w-full  bg-white mx-auto flex flex-col items-center justify-center gap-4 py-3 px-4 md:flex-row md:py-4 fixed bottom-0 left-0 right-0 z-50 md:fixed md:bottom-0 md:left-0 md:right-0 md:z-50">
         {/* Contact Information */}
         <div className="flex items-center flex-col md:flex-row md:gap-6">
           <div className="relative">
