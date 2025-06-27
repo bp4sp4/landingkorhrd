@@ -80,19 +80,16 @@ export default function StickyFooter() {
       <div className="w-full  bg-white mx-auto flex flex-col items-center justify-center gap-4 py-3 px-4 md:flex-row md:py-4 fixed bottom-0 left-0 right-0 z-50 md:fixed md:bottom-0 md:left-0 md:right-0 md:z-50">
         {/* Contact Information */}
         <div className="flex items-center flex-col md:flex-row md:gap-6">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full"></div>
-            <div className="relative text-center">
-              <p className="text-sm font-medium text-muted-foreground">
-                학습상담문의
-              </p>
-              <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
-                010-8484-7933
-              </p>
-            </div>
+          <div className="relative text-center">
+            <p className="text-sm font-medium text-muted-foreground">
+              학습상담문의
+            </p>
+            <p className="text-xl md:text-2xl hidden md:block font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
+              010-8484-7933
+            </p>
           </div>
 
-          <div className="text-center md:text-left">
+          <div className="hidden md:block text-center md:text-left">
             <p className="text-base md:text-lg font-bold">
               상담받고 <span className="text-primary">무료수강 혜택</span> 받기
             </p>
