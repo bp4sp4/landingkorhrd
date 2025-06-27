@@ -16,6 +16,17 @@ export default async function DashboardLayout({
     redirect("/admin/login");
   }
 
+  // 어드민 권한 체크
+  const { data: adminUser } = await supabase
+    .from("admins")
+    .select("email")
+    .eq("email", session.user.email)
+    .single();
+
+  if (!adminUser) {
+    redirect("/admin/login");
+  }
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <AdminHeader />
