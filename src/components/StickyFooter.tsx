@@ -24,7 +24,7 @@ export default function StickyFooter() {
     phoneNumber: "",
     agreed: false,
   });
-  const [phoneError, setPhoneError] = useState("");
+  const [phoneError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
