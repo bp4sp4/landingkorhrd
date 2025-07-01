@@ -91,10 +91,7 @@ export default function StickyFooter() {
 
           <div className="hidden md:block text-center md:text-left">
             <p className="text-base md:text-lg font-bold">
-              상담받고 <span className="text-primary">무료수강 혜택</span> 받기
-            </p>
-            <p className="text-xs text-muted-foreground">
-              자격증 취득 후 바로 취업
+              상담받고 <span className="text-primary">최대장학 혜택</span> 받기
             </p>
           </div>
         </div>
@@ -150,8 +147,7 @@ export default function StickyFooter() {
                     </p>
                     <ul className="list-disc list-inside bg-gray-50 p-3 rounded-md">
                       <li>
-                        <strong>수집항목 :</strong> 이름, 연락처, 상담내용,
-                        관심분야
+                        <strong>수집항목 :</strong> 이름, 연락처, 상담내용
                       </li>
                       <li>
                         <strong>개인정보 수집방법 :</strong> 홈페이지 (문의하기)
@@ -201,7 +197,7 @@ export default function StickyFooter() {
               type="submit"
               className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground font-medium w-full md:w-auto transition-all duration-300 h-9"
             >
-              상담신청
+              무료상담신청
               <ArrowRight className="ml-1 h-4 w-4" />
             </Button>
           </div>
